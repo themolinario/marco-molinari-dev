@@ -2,7 +2,7 @@
 
 Personal portfolio and blog built with React, TanStack Router, and Tailwind CSS v4.
 
-**Live:** [themolinario.github.io/marco-molinari-dev](https://themolinario.github.io/marco-molinari-dev) · **Repo:** [github.com/themolinario/marco-molinari-dev](https://github.com/themolinario/marco-molinari-dev)
+**Live:** [marco.molinari.dev](https://marco.molinari.dev) · **Repo:** [github.com/themolinario/marco-molinari-dev](https://github.com/themolinario/marco-molinari-dev)
 
 ## Stack
 
