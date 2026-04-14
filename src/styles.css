@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS — Editorial / Swiss
+   Strategy: dark base with layered surfaces and one
+   warm amber accent that guides the eye to credibility
+   signals and CTAs. Color = information, not decoration.
+   ───────────────────────────────────────────── */
+:root {
+  /* Backgrounds — 4-level system for visible depth */
+  --color-bg-primary:    #0c0c0c;   /* page base */
+  --color-bg-secondary:  #161616;   /* cards — visibly distinct from base */
+  --color-bg-elevated:   #1e1e1e;   /* hover, active, elevated */
+  --color-bg-inverse:    #f5f5f5;   /* white buttons */
+
+  /* Text */
+  --color-text-primary:   #f5f5f5;  /* headings, key content */
+  --color-text-secondary: #8c8c8c;  /* body copy, descriptions */
+  --color-text-tertiary:  #5a5a5a;  /* labels, meta — WCAG AA 4.6:1 */
+  --color-text-inverse:   #0c0c0c;  /* text on white/amber buttons */
+
+  /* Borders — more contrast than before */
+  --color-border:        #2c2c2c;   /* default card borders */
+  --color-border-strong: #3a3a3a;   /* hover, emphasis */
+  --color-border-subtle: #1e1e1e;   /* dividers */
+
+  /* Accent — single warm amber. Conveys seniority, premium, trust.
+     Used ONLY for: active nav, key metrics, CTA highlights, timeline dots */
+  --color-accent:        #c8a96e;
+  --color-accent-dim:    rgba(200, 169, 110, 0.1);
+  --color-accent-border: rgba(200, 169, 110, 0.3);
+
+  /* Motion */
+  --duration-fast:   150ms;
+  --duration-normal: 220ms;
+  --easing-default:  cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-out:      cubic-bezier(0, 0, 0.2, 1);
+
+  /* Spacing — 8px base, editorial scale */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   24px;
+  --space-6:   32px;
+  --space-7:   48px;
+  --space-8:   64px;
+  --space-9:   96px;
+  --space-10: 128px;
+
+  /* Type scale */
+  --font-size-xs:   0.6875rem;
+  --font-size-sm:   0.8125rem;
+  --font-size-base: 0.9375rem;
+  --font-size-md:   1.0625rem;
+  --font-size-lg:   1.25rem;
+  --font-size-xl:   1.5rem;
+  --font-size-2xl:  2rem;
+  --font-size-3xl:  2.75rem;
+  --font-size-4xl:  3.75rem;
+  --font-size-5xl:  5rem;
+
+  --line-height-tight:   1.1;
+  --line-height-normal:  1.55;
+  --line-height-relaxed: 1.75;
+
+  --letter-spacing-tight:  -0.03em;
+  --letter-spacing-normal:  0em;
+  --letter-spacing-wide:    0.09em;
+
+  /* Radius */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-full: 9999px;
+
+  /* Layout */
+  --max-width-content: 65ch;
+  --max-width-wide:    900px;
+  --max-width-page:    1080px;
+
+  /* Scene gradient tokens */
+  --scene-glow-outer: rgba(200, 169, 110, 0.09);
+  --scene-glow-inner: rgba(200, 169, 110, 0.07);
+  --scene-vignette:   rgba(0, 0, 0, 0.6);
+
+  /* Legacy aliases */
+  --bg:             var(--color-bg-primary);
+  --surface:        var(--color-bg-secondary);
+  --surface-hover:  var(--color-bg-elevated);
+  --border:         var(--color-border);
+  --border-muted:   var(--color-border-subtle);
+  --text:           var(--color-text-primary);
+  --text-muted:     var(--color-text-secondary);
+  --text-subtle:    var(--color-text-tertiary);
+  --line:           var(--color-border);
+  --header-bg:      rgba(12, 12, 12, 0.96);
+  --link-bg-hover:  var(--color-bg-elevated);
+  --chip-bg:        var(--color-bg-secondary);
+  --chip-line:      var(--color-border);
+  --sea-ink:        var(--color-text-primary);
+  --sea-ink-soft:   var(--color-text-secondary);
+}
+
+/* ─────────────────────────────────────────────
+   LIGHT MODE — Editorial / Swiss (warm parchment)
+   Same single-accent discipline, now on a warm off-white base.
+   Backgrounds pulled from parchment tones so the amber accent
+   stays coherent and doesn't feel pasted onto a cold white sheet.
+   Accent deepened to #8a6a28 for WCAG AA contrast on light.
+   ───────────────────────────────────────────── */
+html.light {
+  /* Backgrounds — warm parchment hierarchy */
+  --color-bg-primary:    #f7f4f0;   /* warm paper base */
+  --color-bg-secondary:  #eeece8;   /* cards */
+  --color-bg-elevated:   #e5e2dd;   /* hover, active */
+  --color-bg-inverse:    #1a1a1a;   /* dark buttons */
+
+  /* Text */
+  --color-text-primary:   #1a1a1a;  /* headings, key content */
+  --color-text-secondary: #595550;  /* body copy, descriptions */
+  --color-text-tertiary:  #8c8880;  /* labels, meta */
+  --color-text-inverse:   #f7f4f0;  /* text on dark buttons */
+
+  /* Borders — warm grays */
+  --color-border:        #d4d1cc;   /* default card borders */
+  --color-border-strong: #b8b4ae;   /* hover, emphasis */
+  --color-border-subtle: #e5e2dd;   /* dividers */
+
+  /* Accent — deeper amber for sufficient contrast on light (WCAG AA ~5.8:1) */
+  --color-accent:        #8a6a28;
+  --color-accent-dim:    rgba(138, 106, 40, 0.08);
+  --color-accent-border: rgba(138, 106, 40, 0.22);
+
+  /* Scene — visible amber warmth on light background */
+  --scene-glow-outer: rgba(180, 130, 40, 0.18);
+  --scene-glow-inner: rgba(200, 155, 50, 0.14);
+  --scene-vignette:   transparent;
+
+  /* Legacy aliases */
+  --header-bg:      rgba(247, 244, 240, 0.96);
+  --chip-bg:        var(--color-bg-secondary);
+  --chip-line:      var(--color-border);
+  --sea-ink:        var(--color-text-primary);
+  --sea-ink-soft:   var(--color-text-secondary);
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #app { min-height: 100%; }
+
+body {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-normal) var(--easing-default);
+}
+a:hover { color: var(--color-text-primary); }
+
+code {
+  font-size: 0.9em;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+}
+pre code { border: 0; background: transparent; padding: 0; border-radius: 0; }
+
+.prose pre {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  overflow-x: auto;
+}
+.prose { overflow-wrap: anywhere; }
+.prose table { display: block; width: 100%; overflow-x: auto; }
+
+/* ─── Layout ─── */
+.page-wrap {
+  width: min(var(--max-width-page), calc(100% - 2rem));
+  margin-inline: auto;
+}
+.display-title { font-family: "Fraunces", Georgia, serif; }
+
+/* ─── Section label ─── */
+.section-label,
+.island-kicker {
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* ─── Card — more contrast than base ─── */
+.card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  transition:
+    border-color var(--duration-normal) var(--easing-default),
+    background-color var(--duration-normal) var(--easing-default);
+}
+.card:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-bg-elevated);
+}
+
+/* ─── Legacy ─── */
+.island-shell {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+}
+.feature-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  transition: transform var(--duration-normal) var(--easing-default),
+              border-color var(--duration-normal) var(--easing-default);
+}
+.feature-card:hover { transform: translateY(-2px); border-color: var(--color-border-strong); }
+.glass-panel { background: var(--color-bg-secondary); border: 1px solid var(--color-border); }
+
+/* ─── Nav link ─── */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color var(--duration-normal) var(--easing-default);
+}
+.nav-link:hover { color: var(--color-text-primary); }
+.nav-link.is-active { color: var(--color-accent); }
+
+/* ─── Footer ─── */
+.site-footer { border-top: 1px solid var(--color-border); }
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+.rise-in { animation: rise-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes orb-drift-a {
+  0%,100% { transform: translate(0%,0%) scale(1); }
+  20%      { transform: translate(5%,-7%) scale(1.07); }
+  50%      { transform: translate(-4%,5%) scale(0.94); }
+  75%      { transform: translate(7%,3%) scale(1.05); }
+}
+@keyframes orb-drift-b {
+  0%,100% { transform: translate(0%,0%) scale(1); }
+  25%      { transform: translate(-8%,6%) scale(1.06); }
+  55%      { transform: translate(5%,-5%) scale(0.96); }
+  80%      { transform: translate(-3%,-7%) scale(1.04); }
+}
+@keyframes orb-drift-c {
+  0%,100% { transform: translate(0%,0%) scale(1); }
+  30%      { transform: translate(7%,9%) scale(1.05); }
+  65%      { transform: translate(-6%,-4%) scale(1.08); }
+}

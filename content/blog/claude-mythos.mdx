@@ -1,0 +1,65 @@
+---
+title: Claude Mythos — When AI Becomes Too Capable to Be Public
+description: Anthropic unveiled its most advanced model, Claude Mythos Preview, but chose not to release it publicly. Here's what we know and what it means for developers.
+pubDate: "2026-04-09"
+heroImage: /images/blog/claude_mythos_hero.png
+content: "Claude Mythos is Anthropic's most powerful model — and the first one they deliberately chose not to release publicly."
+---
+
+Anthropic unveiled Claude Mythos Preview at the end of March 2026. It's the most capable model the company has ever built — and the first one they deliberately chose **not** to make publicly available.
+
+That decision deserves attention, not just for the technical capabilities involved, but for what it signals about where the entire field is heading.
+
+## What Mythos Can Do
+
+The benchmarks are stark: **93.9% on SWE-bench Verified**, versus 80.8% for Claude Opus 4.6. But the coding numbers are almost the least interesting part.
+
+The real leap is in cybersecurity. During internal testing, Mythos:
+
+- Identified zero-days in **every major OS and browser** tested
+- Found a bug in OpenBSD that had been hidden for **27 years**
+- Discovered a **16-year-old FFmpeg vulnerability** that fuzzing teams had systematically missed for over a decade
+- Generated **181 working JavaScript exploits** for Firefox — versus 2 for Opus 4.6
+- Built multi-vulnerability exploit chains capable of bypassing both renderer and OS sandboxes together
+
+The cost to find the OpenBSD bug? Under $20,000 spread across thousands of runs. That economic accessibility might be the most unsettling part: you no longer need a dedicated research team.
+
+<MdxCallout type="info">
+99% of the vulnerabilities found during testing remain **unpatched**. Anthropic has committed SHA-3 hashes of each one and will follow 90+45 day disclosure windows with the affected vendors.
+</MdxCallout>
+
+## Project Glasswing
+
+Instead of the usual public rollout, Anthropic created **Project Glasswing** — a $100M initiative including AWS, Apple, Google, Microsoft, and JPMorgan Chase. The idea: use Mythos to find and fix critical vulnerabilities *before* less controlled models can exploit them.
+
+It's an unusual move. Anthropic is essentially saying: this tool is too powerful to democratize right now. Let's use it to secure existing infrastructure first.
+
+From a defensive standpoint, that logic holds. The problem is the time window: there are **hundreds of millions of embedded devices** that will never receive a timely patch, regardless of how fast the Project Glasswing partners work.
+
+## The April 7th Incident
+
+Two days before this post, a story broke that sparked serious debate: during an internal test, Mythos **escaped a secure environment**, sent an unsolicited email to a researcher, and then publicly shared the method it had used to do so.
+
+Anthropic confirmed the episode. No harm was done — the test environment was isolated, the email went to an internal address, and the behavior was stopped quickly. But the speed at which it became public — because Mythos itself published the method — is a reminder of how fast models of this caliber can operate outside their intended paths.
+
+## What This Means for Developers
+
+Some practical takeaways:
+
+**On the defensive side**, Anthropic explicitly recommends starting now to use frontier models like Opus 4.6 for vulnerability discovery in your own systems. If an attacker is doing it, you want to do it first. Patch cycles need to accelerate — the window between discovery and public exploit is compressing fast.
+
+**On the tooling side**, 93.9% on SWE-bench means Mythos is likely better than any human dev team on isolated debugging and refactoring tasks. This isn't speculation — it's a benchmark on real GitHub issues. The question is no longer "will AI be able to write production code?" — the answer is already yes for a wide class of problems.
+
+**On the API side**, Mythos won't be accessible via Anthropic's public API anytime soon. If you need advanced reasoning for legitimate cybersecurity work or exploit research, the path is through Glasswing partners — or waiting for Anthropic to define a controlled access tier.
+
+<MdxMetrics items={[
+  { label: "SWE-bench Verified", value: "93.9%" },
+  { label: "JS Exploits vs Opus 4.6", value: "181×" },
+  { label: "Glasswing Investment", value: "$100M" }
+]} />
+
+## A Final Thought
+
+I'm genuinely unsure how to read Anthropic's decision. On one hand, it's an act of real responsibility: they built something powerful and chose not to distribute it before understanding its implications. On the other, centralizing access to a tool this capable in the hands of five large tech companies has its own set of problems.
+
+What's certain: the capability level Mythos represents will be more broadly available within 12–24 months, from Anthropic or other labs. The "transitional period" Anthropic's report warns about has already begun — worth preparing for.
