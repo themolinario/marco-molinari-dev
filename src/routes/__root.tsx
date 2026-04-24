@@ -1,7 +1,9 @@
 import { Outlet, createRootRoute, useNavigate, useRouterState } from '@tanstack/react-router'
-import { useState, useEffect, createContext } from 'react'
+import { useState, useEffect, createContext, useCallback } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { Navbar } from '../components/Navbar'
 import { Scene } from '../components/Scene'
+import { IntroAnimation } from '../components/IntroAnimation'
 
 import '../styles.css'
 
@@ -25,6 +27,15 @@ function RootComponent() {
   const [activeTab, setActiveTab] = useState('Home')
   const navigate = useNavigate()
   const routerState = useRouterState()
+
+  const [showIntro, setShowIntro] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.location.pathname === '/'
+  })
+
+  const handleIntroDone = useCallback(() => {
+    setShowIntro(false)
+  }, [])
 
   // Sync activeTab with hash if on home page
   useEffect(() => {
@@ -54,8 +65,12 @@ function RootComponent() {
     <TabContext.Provider value={{ activeTab, handleTabChange, TABS }}>
       <Navbar activeTab={activeTab} setActiveTab={handleTabChange} />
       <Scene activeTab={activeTab} />
-      
+
       <Outlet />
+
+      <AnimatePresence>
+        {showIntro && <IntroAnimation key="intro" onComplete={handleIntroDone} />}
+      </AnimatePresence>
     </TabContext.Provider>
   )
 }
